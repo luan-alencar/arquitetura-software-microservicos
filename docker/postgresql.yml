@@ -1,0 +1,10 @@
+version: '2'
+services:
+  postgresql:
+    image: postgres:11.5-alpine
+    environment:
+      - POSTGRES_USER=acessoservice
+      - POSTGRES_PASSWORD=acessoservice
+      - POSTGRES_DB=acessoservice
+    ports:
+      - 5429:5432
