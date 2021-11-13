@@ -10,7 +10,6 @@ import java.io.Serializable;
 @Setter
 @Embeddable
 public class InscricaoRespostaID  implements Serializable {
-    private static final long serialVersionUID = 6849844032514932053L;
 
     private Long inscricaoID;
     private Long eventoID;

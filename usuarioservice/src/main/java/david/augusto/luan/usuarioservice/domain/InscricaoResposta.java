@@ -13,23 +13,21 @@ import java.io.Serializable;
 public class InscricaoResposta implements Serializable {
     private static final long serialVersionUID = -4863434457865710934L;
 
-    @EmbeddedId
-    private InscricaoRespostaID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @MapsId("inscricaoID")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_inscricao")
-    private Inscricao inscricao;
+    private Inscricao inscricaoID;
 
-    @MapsId("eventoID")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_evento")
-    private Evento evento;
+    private Evento eventoID;
 
-    @MapsId("perguntaID")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_pergunta")
-    private Pergunta pergunta;
+    private Pergunta perguntaID;
 
     private String resposta;
 }

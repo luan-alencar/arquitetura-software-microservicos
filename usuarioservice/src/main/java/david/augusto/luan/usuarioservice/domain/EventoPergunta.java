@@ -18,10 +18,10 @@ public class EventoPergunta {
     @MapsId("eventoID")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_evento")
-    private Evento evento;
+    private Evento eventoID;
 
     @MapsId("perguntaID")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_pergunta")
-    private Pergunta pergunta;
+    private Pergunta perguntaID;
 }

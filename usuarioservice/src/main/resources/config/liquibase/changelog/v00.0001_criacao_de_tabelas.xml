@@ -1,0 +1,210 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="1" author="Luan Alencar">
+
+        <createTable tableName="TB_USUARIO">
+
+            <column name="id" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="nome" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cpf" type="VARCHAR(11)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="telefone" type="VARCHAR(15)">
+            </column>
+
+            <column name="data_nascimento" type="DATE">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="chave" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="adm" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey tableName="TB_USUARIO" columnNames="id" constraintName="pk_usuario"/>
+
+    </changeSet>
+
+    <changeSet id="2" author="Luan Augusto">
+
+        <createTable tableName="TB_EVENTO">
+
+            <column name="id" type="NUMBER ">
+                <constraints nullable="false"/>
+            </column>
+
+            <column defaultValueBoolean="false" name="tipo_inscricao" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="titulo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="descricao" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="quantidade_vagas" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="valor" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="data_inicio" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="data_fim" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey tableName="TB_EVENTO" columnNames="id" constraintName="pk_evento"/>
+
+    </changeSet>
+
+    <changeSet id="5" author="Luan Augusto">
+        <createTable tableName="TB_TIPO_SITUACAO">
+            <column name="id" type="NUMBER">
+            </column>
+            <column name="descricao" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="TB_TIPO_SITUACAO" columnNames="id"/>
+        <addForeignKeyConstraint baseTableName="TB_TIPO_SITUACAO" baseColumnNames="id"
+                                 constraintName="fk_tipo_situacao" referencedTableName="TB_INSCRICAO"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="3" author="luan.augusto">
+
+        <createTable tableName="TB_INSCRICAO">
+
+            <column name="id" type="number">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="id_usuario" type="number">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="id_evento" type="NUMBER">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="id_tipo_situacao" type="NUMBER">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+        </createTable>
+
+
+        <addPrimaryKey tableName="TB_INSCRICAO" columnNames="id_usuario, id_evento, id_tipo_situacao"
+                       constraintName="pk_inscricao"/>
+        <addForeignKeyConstraint baseTableName="TB_INSCRICAO" baseColumnNames="id_usuario"
+                                 constraintName="fk_usuario" referencedTableName="TB_USUARIO"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="TB_INSCRICAO" baseColumnNames="id_evento"
+                                 constraintName="fk_evento" referencedTableName="TB_EVENTO"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="TB_INSCRICAO" baseColumnNames="id_tipo_situacao"
+                                 constraintName="fk_tipo_situacao" referencedTableName="TB_TIPO_SITUACAO"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+
+    <changeSet id="4" author="luan.augusto">
+        <createTable tableName="TB_TIPO_EVENTO">
+            <column name="id" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="TB_TIPO_EVENTO" columnNames="id" constraintName="pk_tipo_evento"/>
+
+    </changeSet>
+
+
+    <changeSet id="6" author="Luan Augusto">
+
+        <createTable tableName="TB_PERGUNTA">
+
+            <column name="id" type="NUMBER">
+            </column>
+
+            <column name="titulo" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="obrigatoriedade" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+        <addPrimaryKey tableName="TB_PERGUNTA" columnNames="id" constraintName="pk_pergunta"/>
+
+    </changeSet>
+
+    <changeSet id="7" author="luan.augusto">
+        <createTable tableName="TB_EVENTO_PERGUNTA">
+            <column name="id_evento" type="NUMBER">
+            </column>
+            <column name="id_pergunta" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="TB_EVENTO_PERGUNTA" columnNames="id_evento, id_pergunta"
+                       constraintName="pk_evento_pergunta"/>
+
+        <addForeignKeyConstraint baseTableName="TB_EVENTO_PERGUNTA" baseColumnNames="id_evento"
+                                 constraintName="fk_evento" referencedTableName="TB_EVENTO"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="TB_EVENTO_PERGUNTA" baseColumnNames="id_pergunta"
+                                 constraintName="fk_pergunta" referencedTableName="TB_PERGUNTA"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="7" author="luan.augusto">
+        <createTable tableName="TB_RESPOSTA">
+            <column name="id" type="NUMBER">
+            </column>
+            <column name="id_evento_pergunta" type="NUMBER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resposta" type="TEXT"/>
+
+        </createTable>
+        <addPrimaryKey tableName="TB_RESPOSTA" columnNames="id,id_evento_pergunta" constraintName="pk_resposta"/>
+
+        <addForeignKeyConstraint baseTableName="TB_RESPOSTA" baseColumnNames="id_evento_pergunta"
+                                 constraintName="fk_evento_pergunta" referencedColumnNames="id"
+                                 referencedTableName="TB_PERGUNTA"/>
+    </changeSet>
+
+
+</databaseChangeLog>
