@@ -1,21 +1,19 @@
 package david.augusto.luan.usuarioservice.service;
 
+import david.augusto.luan.usuarioservice.domain.Usuario;
+import david.augusto.luan.usuarioservice.service.dto.UsuarioDTO;
+
 import java.util.List;
 
-public interface UsuarioService<E, D> extends GenericEntityService{
+public interface UsuarioService<E, D> {
 
-    @Override
-    List listar();
+    List<D> listar();
 
-    @Override
-    Object salvar(Object entidade);
+    UsuarioDTO salvar(Usuario entidade);
 
-    @Override
-    Object buscarPorID(Long id);
+    UsuarioDTO buscarPorID(Long id);
 
-    @Override
-    Object editar(Object dto);
+    UsuarioDTO editar(Usuario dto);
 
-    @Override
-    void deletar(Object dto);
+    void deletar(Usuario dto);
 }
