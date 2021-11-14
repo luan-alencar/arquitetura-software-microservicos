@@ -1,8 +1,9 @@
 package david.augusto.luan.usuarioservice.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,11 +15,13 @@ import java.util.List;
 @Table(name = "TB_EVENTO")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Evento implements Serializable {
     private static final long serialVersionUID = 2213349394564022776L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "local")
