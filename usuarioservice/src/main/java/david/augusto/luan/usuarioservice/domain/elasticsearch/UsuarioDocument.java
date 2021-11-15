@@ -47,13 +47,7 @@ public class UsuarioDocument extends BaseDocument {
                     store = true, analyzer = TRIM_CASE_INSENSITIVE, fielddata = true)})
     private String chave;
 
-    @MultiField(mainField = @Field(type = FieldType.Text,
-            store = true, analyzer = TRIM_CASE_INSENSITIVE, fielddata = true),
-            otherFields = {@InnerField(suffix = SORT, type = FieldType.Boolean,
-                    store = true, analyzer = TRIM_CASE_INSENSITIVE, fielddata = true)})
-    private String adm;
-
-    public UsuarioDocument(Long id, String nome, String cpf, String email, String telefone, LocalDate dataNascimento, String chave, String adm) {
+    public UsuarioDocument(Long id, String nome, String cpf, String email, String telefone, LocalDate dataNascimento, String chave, Boolean adm) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -61,6 +55,5 @@ public class UsuarioDocument extends BaseDocument {
         this.telefone = telefone;
         this.dataNascimento = dataNascimento != null ? dataNascimento.format(DateTimeFormatter.ofPattern(DATE_PATTERN)) : null;
         this.chave = chave;
-        this.adm = adm;
     }
 }

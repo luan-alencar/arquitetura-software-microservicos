@@ -4,3 +4,7 @@ services:
     extends:
       service: postgresql
       file: postgresql.yml
+  elasticsearch-acessoservice:
+    extends:
+      service: elasticsearch
+      file: elasticsearch.yml
