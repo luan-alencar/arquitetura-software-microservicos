@@ -22,6 +22,9 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "nome")
+    private String nome;
+
     @Column(name = "cpf")
     private String cpf;
 
