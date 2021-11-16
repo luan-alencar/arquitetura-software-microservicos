@@ -54,4 +54,7 @@ public class Evento implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "eventoID")
     private List<EventoPergunta> perguntas = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "evento", cascade = CascadeType.ALL)
+    private List<Anexo> anexos = new ArrayList<>();
 }

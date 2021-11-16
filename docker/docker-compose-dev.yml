@@ -8,3 +8,7 @@ services:
     extends:
       service: elasticsearch
       file: elasticsearch.yml
+  minio-acessoservice:
+    extends:
+      service: minio
+      file: minio.yml

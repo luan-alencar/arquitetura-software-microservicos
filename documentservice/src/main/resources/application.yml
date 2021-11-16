@@ -3,6 +3,6 @@ server:
 
 application:
   url: http://localhost:9000
-  accessKey: accessKey
-  secretKey: secretKey
+  accessKey: acessoservice
+  secretKey: acessoservice
   bucket: document
