@@ -1,6 +1,9 @@
 spring:
   application:
     name: Gateway API
+  main:
+    web-application-type: reactive
+
 eureka:
   instance:
     hostname: localhost
