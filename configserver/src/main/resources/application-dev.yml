@@ -1,6 +1,18 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8083/eureka
+
 spring:
+  profiles:
+    active: dev
+
   application:
     name: Acesso Service
+
+server:
+  port: 8087
+
   jpa:
     database: POSTGRESQL
     show-sql: true
@@ -21,5 +33,3 @@ spring:
 application:
   feign:
     url-documents: http://localhost:8081
-server:
-  port: 8080

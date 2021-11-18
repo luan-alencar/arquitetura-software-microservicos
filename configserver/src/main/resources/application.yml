@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: configserver
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/luan-alencar/arquitetura-software-microservicos/tree/configserver/configserver
+
+          # desativar validacao ssl do git
+          skip-ssl-validation: true
+
+          # configurar o tempo em seg que o servidor aguardara para adquirir uma conexao HTTP
+          timeout: 4
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: 8888
