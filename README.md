@@ -48,10 +48,26 @@ O Documentservice, que está no repositório da API, deve ser utilizado para faz
 
 Vá na pasta docker e execute:
 
-
+```
 docker-compose -f docker-compose-dev.yml up -d
-
+```
 Os containers serão montados e estarão prontos.
+
+Em casos de ser necessário refazer/recria-las todas tabelas e apagar os dados da base execute:
+
+```
+docker-compose -f docker-compose-dev.yml down
+```
+
+e depois suba novamente.
+
+Ou então:
+
+```
+docker-compose -f docker-compose-dev.yml up -d --force-recreate
+```
+
+
 
 ## Serviços:
 
@@ -59,3 +75,4 @@ Os serviços são compilados com o maven:
 
 ```
     mvn clean install -DskipTests    
+```
