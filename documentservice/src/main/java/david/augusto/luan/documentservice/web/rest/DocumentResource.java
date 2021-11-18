@@ -14,7 +14,7 @@ public class DocumentResource {
 
     private final DocumentService service;
 
-    @GetMapping("/{uuid}")
+    @GetMapping("/{uuid}")  
     public ResponseEntity<DocumentDTO> buscar(@PathVariable("uuid") String uuid) {
         return ResponseEntity.ok(service.getDocument(uuid));
     }
