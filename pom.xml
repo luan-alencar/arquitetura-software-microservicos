@@ -10,8 +10,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>gateway</module>
+        <module>configserver</module>
         <module>documentservice</module>
+        <module>gateway</module>
         <module>usuarioservice</module>
     </modules>
 </project>
