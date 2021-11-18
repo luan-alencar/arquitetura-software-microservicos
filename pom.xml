@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>david.augusto.luan</groupId>
-    <artifactId>gateway</artifactId>
+    <artifactId>microservices</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>microservices</name>
     <packaging>pom</packaging>
@@ -12,6 +12,7 @@
     <modules>
         <module>configserver</module>
         <module>documentservice</module>
+        <module>eurekaserver</module>
         <module>gateway</module>
         <module>usuarioservice</module>
     </modules>

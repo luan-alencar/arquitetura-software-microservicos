@@ -4,14 +4,23 @@ spring:
   main:
     web-application-type: reactive
 
+  cloud:
+    gateway:
+      routes:
+        - id: configserver, usuarioservice, eurekaserver, documentservice
+          uri: lb://configserver, lb://usuarioservice, lb://eurekaserver, lb://documentservice
+          predicates:
+            - Path=/configserver/**
+            - Path=/usuarioservice/**
+            - Path=/eurekaserver/**
+            - Path=/documentservice/**
+
 eureka:
   instance:
     hostname: localhost
   client:
-    registerWithEureka: false
-    fetchRegistry: false
     service-url:
-      default-zone: http://localhost:8761/eureka
+      default-zone: http://localhost:8083/eureka
 
 server:
   port: 1111
