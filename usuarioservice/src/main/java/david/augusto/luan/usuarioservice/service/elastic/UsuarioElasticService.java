@@ -1,4 +1,4 @@
-package david.augusto.luan.usuarioservice.service;
+package david.augusto.luan.usuarioservice.service.elastic;
 
 import david.augusto.luan.usuarioservice.domain.elasticsearch.UsuarioDocument;
 import david.augusto.luan.usuarioservice.repository.UsuarioRepository;
@@ -14,7 +14,8 @@ import org.springframework.transaction.event.TransactionalEventListener;
 @Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class UsuarioElasticService {
+public class
+UsuarioElasticService {
 
     private final UsuarioRepository usuarioRepository;
     private final UsuarioSearchRepository searchRepository;

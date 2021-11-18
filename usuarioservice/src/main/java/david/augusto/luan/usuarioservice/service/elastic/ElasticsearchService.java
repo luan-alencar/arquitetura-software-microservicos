@@ -1,4 +1,4 @@
-package david.augusto.luan.usuarioservice.service;
+package david.augusto.luan.usuarioservice.service.elastic;
 
 import david.augusto.luan.usuarioservice.repository.elastic.ElasticEntity;
 import david.augusto.luan.usuarioservice.repository.elastic.Reindexer;

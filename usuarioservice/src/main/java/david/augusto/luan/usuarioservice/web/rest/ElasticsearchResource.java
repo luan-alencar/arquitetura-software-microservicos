@@ -1,6 +1,6 @@
 package david.augusto.luan.usuarioservice.web.rest;
 
-import david.augusto.luan.usuarioservice.service.ElasticsearchService;
+import david.augusto.luan.usuarioservice.service.elastic.ElasticsearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
