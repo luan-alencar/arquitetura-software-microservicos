@@ -3,9 +3,14 @@ eureka:
     service-url:
       defaultZone: http://localhost:8083/eureka
 
+
 spring:
   profiles:
     active: dev
+
+  mail:
+    endereco-remetente: luanalencar134@gmail.com
+    nome-remetente: Luan Alencar
 
   application:
     name: Acesso Service
@@ -30,6 +35,28 @@ server:
     password: acessoservice
   liquibase:
     change-log: classpath:/config/liquibase/master.xml
+
+      cloud:
+        stream:
+        bindings:
+        mailer:
+        destination: mailer
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    protocol: smtp
+    username: sgegestaoeventos@gmail.com
+    password: sgesge123
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          quitwait: false
+
 application:
   feign:
     url-documents: http://localhost:8081
