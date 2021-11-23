@@ -16,7 +16,7 @@ public class UsuarioFilter extends DefaultFilter implements BaseFilter, Serializ
 
         List<String> campos = new ArrayList<>();
 
-        filterFields(campos, querry, queryBuilder,"nome", "email", "cpf");
+        filterFields(campos, querry, queryBuilder, "email", "cpf", "chave");
         addShouldTermQuery(queryBuilder,"dataNascimento", querry);
 
         return queryBuilder;
