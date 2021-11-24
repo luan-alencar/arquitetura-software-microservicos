@@ -16,4 +16,7 @@ public class RegraNegocioException extends IllegalArgumentException {
     public RegraNegocioException(final String message, final Throwable cause) {
         super(message, cause);
     }
+
+    public RegraNegocioException(String s) {
+    }
 }
