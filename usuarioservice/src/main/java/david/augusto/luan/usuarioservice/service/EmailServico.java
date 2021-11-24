@@ -7,8 +7,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 
 @Service
 @RequiredArgsConstructor
@@ -19,10 +21,7 @@ public class EmailServico {
     public void enviarEmail(EmailDTO emailDTO) {
         try {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-            MimeMessageHelper message = new MimeMessageHelper(mimeMessage, false, "UTF-8");
-            message.setTo(emailDTO.getDestinatario());
-            message.setFrom("sgegestaoeventos@gmail.com", "SGE");
-            message.setSubject(emailDTO.getAssunto());
+            MimeMessageHelper message = getMimeMessageHelper(emailDTO, mimeMessage);
             for (String s : emailDTO.getCopias()) {
                 message.addCc(s);
             }
@@ -32,5 +31,13 @@ public class EmailServico {
         } catch (UnsupportedEncodingException | javax.mail.MessagingException e) {
             throw new RegraNegocioException("error.title");
         }
+    }
+
+    private MimeMessageHelper getMimeMessageHelper(EmailDTO emailDTO, MimeMessage mimeMessage) throws MessagingException, UnsupportedEncodingException {
+        MimeMessageHelper message = new MimeMessageHelper(mimeMessage, false, "UTF-8");
+        message.setTo(emailDTO.getDestinatario());
+        message.setFrom("sgegestaoeventos@gmail.com", "SGE");
+        message.setSubject(emailDTO.getAssunto());
+        return message;
     }
 }
