@@ -1,0 +1,69 @@
+application:
+  appName: Acesso Service
+
+  mail:
+    endereco-remetente: luanalencar134@gmail.com
+    nome-remetente: SGE
+
+  feign:
+    url-documents: http://localhost:8081
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8083/eureka
+
+spring:
+  application:
+    name: Acesso Service
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5429/acessoservice
+    username: acessoservice
+    password: acessoservice
+
+  jackson:
+    date-format: dd-MM-yyyy
+    deserialization:
+      fail-on-unknown-properties: false
+
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate.id.new_generator_mappings: true
+      hibernate.connection.provider_disables_autocommit: true
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: false
+
+  liquibase:
+    change-log: classpath:/config/liquibase/master.xml
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    protocol: smtp
+    username: sgegestaoeventos@gmail.com
+    password: sgesge123
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          quitwait: false
+    cloud:
+      stream:
+        bindings:
+          mailer:
+            destination: mailer
+
+    rabbitmq:
+      username: admin
+      password: admin123
+
+server:
+  port: 8087
